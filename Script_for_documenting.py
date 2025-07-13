@@ -1,4 +1,3 @@
-
 #Script_for all the graphs on the main docs
 
 import matplotlib.pyplot as plt
@@ -74,6 +73,7 @@ plt.show()
 
 
 # CONSUMPTION OF MAIN CROPS IN SOUTH AFRICA 
+# Website where the data was scrapts https://www.statista.com/statistics/1135184/consumption-of-processed-maize-in-south-africa/
 
 periods = [
     "2001/2002", "2002/2003", "2003/2004", "2004/2005", "2005/2006",
@@ -88,3 +88,14 @@ total_consumption = [
     4520, 4500, 4600, 4850, 4700,
     4800, 5000, 5100, 5180
 ]
+
+plt.figure(figsize=(10, 5))
+plt.plot(periods, total_consumption, marker='o', markersize=5, linestyle='-', color='lightcoral')
+plt.xticks(rotation=90)  # Changed from 45 to 90 for vertical labels
+plt.xlabel('Period')
+plt.ylabel('Total Consumption (in 1,000 tons)') 
+plt.title('Total Consumption of Processed Maize in South Africa')
+plt.grid(True, linestyle='--', alpha=0.7)       
+plt.tight_layout()
+plt.savefig('total_consumption_maize.png', dpi=300, bbox_inches='tight')
+plt.show()
