@@ -61,7 +61,7 @@ plt.gca().invert_yaxis()
 plt.xlabel('Harvested area in thousand hectares')
 plt.title('Harvested Area by Crop')
 
-# Add data labels to the bars
+# Labelling the bars with their values
 for index, value in enumerate(harvested_area_thousand_hectares):
     
     plt.text(value + 30, index, str(value), va='center', fontsize=10)
