@@ -110,29 +110,34 @@ plt.show()
 
 
 # Data [Sourced from the article]
-categories = ['Food Insecure', 'Severely Food Insecure']
+categories = ['Food Insecure', 'Severely\nFood Insecure']  
 percentages = [25.8, 11.4]
 population_millions = [15.3, 6.8]
 
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(3.5, 3.5))  
 
+bar_width = 0.25  # Thinner bars
+x = [0, 0.4]      # Closer bar positions for less gap
+bars = ax.bar(x, population_millions, color=["#f49761", "#e6390d"], width=bar_width, align='edge')
 
-bars = ax.bar(categories, population_millions, color=["#f461a6", "#d93b13"])
+ax.set_xticks([i + bar_width/2 for i in x])
+ax.set_xticklabels(categories)
 
-
-for bar, percent in zip(bars, percentages):
+for bar, percent, cat in zip(bars, percentages, categories):
     height = bar.get_height()
-    ax.text(bar.get_x() + bar.get_width()/2, height + 0.3,
-            f'{percent}%\n({height}M)', ha='center', fontsize=10)
+    # Place category label vertically inside the bar
+    ax.text(bar.get_x() + bar.get_width()/2, height/2, cat, ha='center', va='center', fontsize=9, rotation=90, color='white', fontweight='bold')
+    # Place percentage and population above the bar
+    ax.text(bar.get_x() + bar.get_width()/2, height + 0.2,
+            f'{percent}%\n({height}M)', ha='center', fontsize=8)
 
-ax.set_title('Food Insecurity in South Africa (2022)', fontsize=14)
-ax.set_ylabel('Population (millions)', fontsize=12)
-ax.set_ylim(0, max(population_millions) + 3)
+# ax.set_title('Food Insecurity in South Africa (2022)', fontsize=11)
+ax.set_ylabel('Population (millions)', fontsize=10)
+ax.set_ylim(0, max(population_millions) + 2)
 ax.set_facecolor('white')
-plt.grid(axis='y', linestyle='--', alpha=0.7)
-plt.tight_layout()
+plt.grid(axis='y', linestyle='--', alpha=0.5)
+plt.tight_layout(pad=1.0)
 
-
-plt.savefig('food_insecurity_sa.png') 
+plt.savefig('food_insecurity_sa.png')
 plt.show()
 
