@@ -103,3 +103,35 @@ plt.ylabel('Total Consumption (in 1,000 tons)')
 plt.tight_layout()
 plt.savefig('total_consumption_maize.png', dpi=300, bbox_inches='tight')
 plt.show()
+
+
+#Food Insecurity From https://sagrainmag.co.za/2024/10/02/sa-produces-enough-food-still-people-are-starving/#:~:text=In%20stark%20contrast%20to%20this,individuals)%20experience%20severe%20food%20insecurity.
+
+
+
+# Data [Sourced from the article]
+categories = ['Food Insecure', 'Severely Food Insecure']
+percentages = [25.8, 11.4]
+population_millions = [15.3, 6.8]
+
+fig, ax = plt.subplots(figsize=(8, 6))
+
+
+bars = ax.bar(categories, population_millions, color=["#f461a6", "#d93b13"])
+
+
+for bar, percent in zip(bars, percentages):
+    height = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width()/2, height + 0.3,
+            f'{percent}%\n({height}M)', ha='center', fontsize=10)
+
+# Customize the chart
+ax.set_title('Food Insecurity in South Africa (2022)', fontsize=14)
+ax.set_ylabel('Population (millions)', fontsize=12)
+ax.set_ylim(0, max(population_millions) + 3)
+ax.set_facecolor('white')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+
+plt.show()
+
