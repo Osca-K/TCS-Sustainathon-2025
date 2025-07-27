@@ -89,13 +89,17 @@ total_consumption = [
     4800, 5000, 5100, 5180
 ]
 
-plt.figure(figsize=(10, 5))
-plt.plot(periods, total_consumption, marker='o', markersize=5, linestyle='-', color='lightcoral')
+
+plt.rcParams['font.family'] = "Times New Roman"
+plt.rcParams['font.size'] = 12
+
+plt.figure(figsize=(6, 4))
+plt.plot(periods, total_consumption, marker='o', markersize=5, linestyle='-', color='cornflowerblue')
 plt.xticks(rotation=90)  # Changed from 45 to 90 for vertical labels
 plt.xlabel('Period')
 plt.ylabel('Total Consumption (in 1,000 tons)') 
-plt.title('Total Consumption of Processed Maize in South Africa')
-plt.grid(True, linestyle='--', alpha=0.7)       
+# plt.title('Total Consumption of Processed Maize in South Africa')
+# plt.grid(True, linestyle='--', alpha=0.7)       
 plt.tight_layout()
 plt.savefig('total_consumption_maize.png', dpi=300, bbox_inches='tight')
 plt.show()
