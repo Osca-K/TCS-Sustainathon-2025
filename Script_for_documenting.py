@@ -125,7 +125,6 @@ for bar, percent in zip(bars, percentages):
     ax.text(bar.get_x() + bar.get_width()/2, height + 0.3,
             f'{percent}%\n({height}M)', ha='center', fontsize=10)
 
-# Customize the chart
 ax.set_title('Food Insecurity in South Africa (2022)', fontsize=14)
 ax.set_ylabel('Population (millions)', fontsize=12)
 ax.set_ylim(0, max(population_millions) + 3)
@@ -133,5 +132,7 @@ ax.set_facecolor('white')
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 
+
+plt.savefig('food_insecurity_sa.png') 
 plt.show()
 
